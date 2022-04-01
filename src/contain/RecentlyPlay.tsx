@@ -25,7 +25,7 @@ const RecentlyPlay = () => {
             }}
             >
                 <Image
-                    source = {item.image}
+                    source = {item.image[0].url}
                     resizeMode= 'cover'
                     resizeMethod = 'resize'
                     style={styles.image}

@@ -23,4 +23,16 @@ export const PlaylistData = [
         songNumber: 123,
         image: require('../assets/Playlist/Eminem.png')
     },
+    {
+        id: 5,
+        title: 'The Weeknd',
+        songNumber: 123,
+        image: require('../assets/Playlist/Weeknd.png')
+    },
+    {
+        id: 6,
+        title: 'Eminem',
+        songNumber: 123,
+        image: require('../assets/Playlist/Eminem.png')
+    },
 ]

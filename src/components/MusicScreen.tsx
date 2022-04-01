@@ -2,7 +2,6 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import { HStack, Button, } from 'native-base'
 import React from 'react'
 import {  StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { backgroundColor, borderRadius, padding } from 'styled-system';
 import Album from '../contain/Album';
 import Artist from '../contain/Artist';
 import Playlist from '../contain/Playlist';

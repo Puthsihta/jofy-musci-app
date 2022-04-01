@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { height, textAlign } from 'styled-system'
+import { active_opacity, style } from '../styles'
 import { ArtistData } from '../temp/Artist'
 
 const Artist = () => {
@@ -13,14 +13,17 @@ const Artist = () => {
     const renderItems = ({item}:any) => {
         return(
             <View style={styles.Items}>
-                <TouchableOpacity activeOpacity={0.5}>
+                <TouchableOpacity 
+                activeOpacity={active_opacity}
+                onPress ={() => {}}
+                >
                     <Image
                     source={item.image}
                     resizeMode = 'cover'
                     resizeMethod = 'resize'
                     style={styles.image}
                     />
-                    <Text style={styles.text}>
+                    <Text style={[style.pE, styles.text]}>
                         {item.name}
                     </Text>
                 </TouchableOpacity>
@@ -29,12 +32,13 @@ const Artist = () => {
     }
     return (
         <View style={styles.container}>
-            <Text style={styles.header}>Artist</Text>
+            <Text style={[style.pt ,styles.header]}>Artist</Text>
             <FlatList
                 numColumns={2}
                 data={ArtistData}
                 showsHorizontalScrollIndicator = {false}
                 renderItem ={renderItems}
+                contentContainerStyle={{marginHorizontal: 12,}}
                 keyExtractor={keyExtrator}
                 
             />
@@ -53,9 +57,7 @@ const styles = StyleSheet.create({
     header:
     {
         fontSize: 36,
-        fontFamily: 'Roboto',
         color: '#fff',
-        fontWeight: 'bold',
         marginHorizontal: 12,
         marginVertical: 12,
     },
@@ -70,18 +72,16 @@ const styles = StyleSheet.create({
         backgroundColor: '#6BB495',
         paddingVertical: 9,
         paddingHorizontal: 18,
-        marginVertical: 12,
-        marginHorizontal: 12,
         width: 159,
         height: 164,
         borderRadius: 12,
+        marginRight: 12,
+        marginBottom: 12,
     },
     text:
     {
-        fontWeight: 'bold',
         color: '#fff',
         fontSize: 15,
-        fontFamily: 'Roboto',
         textAlign: 'center',
         marginTop: 9,
     }

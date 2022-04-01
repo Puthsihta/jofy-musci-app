@@ -3,7 +3,26 @@ export const Release = [
         id: 1,
         title: 'Shivers',
         artist: 'Ed Sheeran',
-        image: require('../assets/NewRelease/1.jpg'),
+        image: [
+            {
+                url : require('../assets/NewRelease/1.jpg')
+            },
+            {
+                url : require('../assets/NewRelease/2.jpg')
+            },
+            {
+                url : require('../assets/NewRelease/3.jpg')
+            },
+            {
+                url : require('../assets/NewRelease/4.jpg')
+            },
+            {
+                url : require('../assets/NewRelease/5.jpg')
+            },
+            {
+                url : require('../assets/NewRelease/6.jpg')
+            }
+        ],
         track: [
             {
                 url: 'https://dl40.320ytmp3.com/file/youtubekX5PN1yZTGQ128.mp3?fn=M-Fatt%20-%20Leave%20(Official%20Video).mp3'
@@ -27,7 +46,26 @@ export const Release = [
     },
     {
         id: 2,
-        image: require('../assets/NewRelease/2.jpg'),
+        image: [
+            {
+                url : require('../assets/NewRelease/2.jpg')
+            },
+            {
+                url : require('../assets/NewRelease/1.jpg')
+            },
+            {
+                url : require('../assets/NewRelease/3.jpg')
+            },
+            {
+                url : require('../assets/NewRelease/4.jpg')
+            },
+            {
+                url : require('../assets/NewRelease/5.jpg')
+            },
+            {
+                url : require('../assets/NewRelease/6.jpg')
+            }
+        ],
         title: 'Born this Way',
         artist: 'VanDDa',
         track: [
@@ -53,7 +91,26 @@ export const Release = [
     },
     {
         id: 3,
-        image: require('../assets/NewRelease/3.jpg'),
+        image: [
+            {
+                url : require('../assets/NewRelease/3.jpg')
+            },
+            {
+                url : require('../assets/NewRelease/2.jpg')
+            },
+            {
+                url : require('../assets/NewRelease/1.jpg')
+            },
+            {
+                url : require('../assets/NewRelease/4.jpg')
+            },
+            {
+                url : require('../assets/NewRelease/5.jpg')
+            },
+            {
+                url : require('../assets/NewRelease/6.jpg')
+            }
+        ],
         title: 'Stuck in the Dream',
         artist: 'Songha',
         track: [
@@ -79,7 +136,26 @@ export const Release = [
     },
     {
         id: 4,
-        image: require('../assets/NewRelease/4.jpg'),
+        image: [
+            {
+                url : require('../assets/NewRelease/4.jpg')
+            },
+            {
+                url : require('../assets/NewRelease/2.jpg')
+            },
+            {
+                url : require('../assets/NewRelease/3.jpg')
+            },
+            {
+                url : require('../assets/NewRelease/1.jpg')
+            },
+            {
+                url : require('../assets/NewRelease/5.jpg')
+            },
+            {
+                url : require('../assets/NewRelease/6.jpg')
+            }
+        ],
         title: 'One Right Now',
         artist: 'Post Malone',
         track: [
@@ -105,7 +181,26 @@ export const Release = [
     },
     {
         id: 5,
-        image: require('../assets/NewRelease/5.jpg'),
+        image: [
+            {
+                url : require('../assets/NewRelease/5.jpg')
+            },
+            {
+                url : require('../assets/NewRelease/2.jpg')
+            },
+            {
+                url : require('../assets/NewRelease/3.jpg')
+            },
+            {
+                url : require('../assets/NewRelease/4.jpg')
+            },
+            {
+                url : require('../assets/NewRelease/1.jpg')
+            },
+            {
+                url : require('../assets/NewRelease/6.jpg')
+            }
+        ],
         title: 'Hello',
         artist: 'Adda',
         track: [
@@ -131,7 +226,26 @@ export const Release = [
     },
     {
         id: 6,
-        image: require('../assets/NewRelease/6.jpg'),
+        image: [
+            {
+                url : require('../assets/NewRelease/6.jpg')
+            },
+            {
+                url : require('../assets/NewRelease/2.jpg')
+            },
+            {
+                url : require('../assets/NewRelease/3.jpg')
+            },
+            {
+                url : require('../assets/NewRelease/4.jpg')
+            },
+            {
+                url : require('../assets/NewRelease/5.jpg')
+            },
+            {
+                url : require('../assets/NewRelease/1.jpg')
+            }
+        ],
         title: 'Talking to the Moon',
         artist: 'Brono Mar',
         track: [

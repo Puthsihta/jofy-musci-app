@@ -19,7 +19,7 @@ const NewRealese = () => {
                 navigate('Play', {data: item})
             }}>
                 <Image
-                source = {item.image}
+                source = {item.image[0].url}
                 resizeMethod = 'resize'
                 resizeMode = 'cover'
                 style={styles.image}

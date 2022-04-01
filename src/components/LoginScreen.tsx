@@ -1,10 +1,11 @@
 import { useNavigation } from '@react-navigation/core'
 import { HStack, Input } from 'native-base'
 import React, { useState, useEffect } from 'react'
-import { ActivityIndicator, Alert, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { ActivityIndicator, Alert, ImageBackground, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { auth } from '../../Firebase'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import MainTab from '../navigate/MainTab'
+import { active_opacity, backgroundLoginColor, deviceWidth, style } from '../styles'
 
 const LoginScreen = () => {
 
@@ -17,6 +18,8 @@ const LoginScreen = () => {
         let is_login = await AsyncStorage.getItem('@is_login');
         return is_login;
     }
+    console.log(isLogin);
+    
     useEffect(() => {
         login().then((result)=> {
             if(result === null)
@@ -47,22 +50,59 @@ const LoginScreen = () => {
             <ActivityIndicator size="large"/>
         </View>
     ): isLogin ? (
+
             <ImageBackground style={styles.container}  source = {require('../assets/logo.png')} resizeMode="cover" resizeMethod= 'resize'>
-            <Text style={styles.header}>JOFY</Text>
-            <Text style={styles.text}>please Login your account here</Text>
+            <StatusBar backgroundColor={backgroundLoginColor} barStyle="light-content" />
+            <Text style={[style.pt, styles.header]}>jofy</Text>
+            <Text style={[style.p, styles.text]}/>
             <HStack style={styles.search}>
-                <Text style={{color: '#fff'}}>
-                username :
+                <Text style={[style.p, {color: '#fff', textTransform: 'uppercase'}]}>
+                username
                 </Text>
-                <Input onChangeText={text => setEmail(text)} value={email} style={styles.input} variant= 'rounded' background = "#919191"/>
+                <TextInput 
+                    onChangeText={text => setEmail(text)} 
+                    value={email} 
+                    style={[
+                        style.p,
+                        {
+                        marginLeft: 12,
+                        color: '#C3C3C3',
+                        width: deviceWidth/1.5,
+                        backgroundColor: '#919191',
+                        borderRadius: 12,
+                        paddingLeft: 12,
+                        height: 45
+                        },
+                    ]}
+                    placeholder = 'your username'
+                    placeholderTextColor="#C3C3C3"
+                />
             </HStack>
             <HStack style={styles.search}>
-                <Text style={{color: '#fff'}}>
-                password : 
+                <Text style={[style.p, {color: '#fff', textTransform: 'uppercase'}]}>
+                password
                 </Text>
-                <Input onChangeText={text => setPassword(text)} value={password} secureTextEntry style={styles.input} variant= 'rounded' background = "#919191"/>
+                <TextInput 
+                    onChangeText={text => setPassword(text)} 
+                    value={password} 
+                    secureTextEntry 
+                    style={[
+                        style.p,
+                        {
+                        marginLeft: 12,
+                        color: '#C3C3C3',
+                        width: deviceWidth/1.5,
+                        backgroundColor: '#919191',
+                        borderRadius: 12,
+                        paddingLeft: 12,
+                        height: 45
+                        },
+                    ]}
+                    placeholder = 'your password'
+                    placeholderTextColor="#C3C3C3"
+                />
             </HStack>
-            <TouchableOpacity style={styles.buttom} onPress ={() => {navigates.navigate("Onboarding"), AsyncStorage.setItem("@is_login","1")}}>
+            <TouchableOpacity activeOpacity={active_opacity} style={styles.buttom} onPress ={() => {navigates.navigate("Onboarding"), AsyncStorage.setItem("@is_login","1")}}>
                 <Text style={{color: '#5F7A61',fontFamily: 'Roboto', fontSize: 24, fontWeight: 'bold', textAlign: 'center'}}>Sing In</Text>
             </TouchableOpacity>
             </ImageBackground>
@@ -80,32 +120,31 @@ const styles = StyleSheet.create({
     },
     header:
     {
-        fontWeight: 'bold',
-        fontFamily: 'Roboto',
         color: '#fff',
         fontSize: 72,
         textAlign: 'center',
         marginTop: 69,
+        textTransform: 'uppercase',
     },
     text:
     {
         color: '#fff',
-        fontFamily: 'Roboto',
         fontSize: 18,
         textAlign: 'center',
-        marginVertical: 21,
+        marginTop: 21,
         marginBottom: 42,
     },
     search:
     {
-        marginHorizontal: 24,
+        marginHorizontal: 12,
         justifyContent: 'space-between',
         marginBottom: 15,
+        alignItems: 'center',
     },
     input:
     {
         marginLeft: 9,
-        width: 200,
+        width: deviceWidth-50,
         height: 33,
     },
     buttom:

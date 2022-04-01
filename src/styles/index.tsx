@@ -9,6 +9,7 @@ export const whiteColor = '#ffffff'
 export const baseBackgroundColor = "#7FC8A9"
 export const secondaryColor = '#5F7A61';
 export const backgroundSecondColor = '#5F7A61';
+export const backgroundLoginColor = '#444941'
 export const shadowColor = '#000'
 
 export const customColor = {

@@ -2,9 +2,19 @@ export const Recently = [
     {
         id: 7,
         title: 'Last One Standing',
-        artist: 'Skylar Grey, Polo G, Mozzy, Eminem',
+        artist: 'Skylar Grey, Eminem',
         album: 'Venom',
-        image: require('../assets/RecentlyPlay/1.png'),
+        image: [
+            {
+                url : require('../assets/RecentlyPlay/1.png')
+            },
+            {
+                url : require('../assets/RecentlyPlay/2.png')
+            },
+            {
+                url : require('../assets/RecentlyPlay/3.png')
+            }
+        ],
         track: [
             {
                 url: require('../song/7.mp3')
@@ -30,7 +40,17 @@ export const Recently = [
         id: 8,
         title: 'Intentions',
         artist: 'Justin Bieber',
-        image: require('../assets/RecentlyPlay/2.png'),
+        image: [
+            {
+                url : require('../assets/RecentlyPlay/2.png')
+            },
+            {
+                url : require('../assets/RecentlyPlay/1.png')
+            },
+            {
+                url : require('../assets/RecentlyPlay/3.png')
+            }
+        ],
         track: [
             {
                 url: require('../song/8.mp3')
@@ -56,7 +76,17 @@ export const Recently = [
         id: 9,
         title: 'Homie',
         artist: 'XOXO',
-        image: require('../assets/RecentlyPlay/3.png'),
+        image: [
+            {
+                url : require('../assets/RecentlyPlay/3.png')
+            },
+            {
+                url : require('../assets/RecentlyPlay/2.png')
+            },
+            {
+                url : require('../assets/RecentlyPlay/1.png')
+            }
+        ],
         track: [
             {
                 url: require('../song/9.mp3')
@@ -82,7 +112,17 @@ export const Recently = [
         id: 10,
         title: 'MONEY',
         artist: 'LISA',
-        image: require('../assets/RecentlyPlay/4.png'),
+        image: [
+            {
+                url : require('../assets/RecentlyPlay/4.png')
+            },
+            {
+                url : require('../assets/RecentlyPlay/2.png')
+            },
+            {
+                url : require('../assets/RecentlyPlay/3.png')
+            }
+        ],
         track: [
             {
                 url: require('../song/10.mp3')
@@ -108,7 +148,17 @@ export const Recently = [
         id: 11,
         title: 'Anymore',
         artist: 'JEON SOMI',
-        image: require('../assets/RecentlyPlay/5.png'),
+        image: [
+            {
+                url : require('../assets/RecentlyPlay/5.png')
+            },
+            {
+                url : require('../assets/RecentlyPlay/2.png')
+            },
+            {
+                url : require('../assets/RecentlyPlay/3.png')
+            }
+        ],
         track: [
             {
                 url: require('../song/11.mp3')
@@ -134,7 +184,17 @@ export const Recently = [
         id: 12,
         title: 'Happy than Ever',
         artist: 'Billie Eilish',
-        image: require('../assets/RecentlyPlay/6.png'),
+        image: [
+            {
+                url : require('../assets/RecentlyPlay/6.png')
+            },
+            {
+                url : require('../assets/RecentlyPlay/2.png')
+            },
+            {
+                url : require('../assets/RecentlyPlay/3.png')
+            }
+        ],
         track: [
             {
                 url: require('../song/12.mp3')

@@ -1,39 +1,24 @@
 import React, { createRef } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity} from 'react-native'
 import AntDesign from 'react-native-vector-icons/AntDesign'
-import ActionSheet from "react-native-actions-sheet";
-import { Input } from 'native-base';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { active_opacity } from '../styles';
 
-const actionSheetRef: any = createRef();
 
 const Album = () => {
     return (
         <View style={styles.container}>
             <View style={{justifyContent: 'center', alignItems: 'center', flex: 1}}>
                 <TouchableOpacity
-                activeOpacity={0.6}
+                activeOpacity={active_opacity}
                 onPress ={() => 
                 {
-                    actionSheetRef.current?.setModalVisible();
+                    
                 }}
                 >
                     <AntDesign style={styles.icon} name = "pluscircle" size={234} color ="#000"/>
                 </TouchableOpacity>
                 <Text style={styles.text}>creat your album here</Text>
             </View>
-            <ActionSheet ref={actionSheetRef} indicatorColor = '#green'>
-                <View style={{ borderTopLeftRadius: 39, borderTopRightRadius: 39, }}>
-                    <Input
-                    variant = 'rounded'
-                    style={{justifyContent: 'center', alignItems: 'center', marginHorizontal: 24, marginTop: 24,}}
-                    placeholder = "Wanna create an Album?"
-                    />
-                </View>
-                <TouchableOpacity style={{justifyContent: 'center', alignItems: 'center', }}>
-                    <Ionicons  name = 'checkmark-circle-outline' size = {99} color = "green"/>
-                </TouchableOpacity>
-            </ActionSheet>
         </View>
     )
 }

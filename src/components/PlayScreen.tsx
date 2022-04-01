@@ -13,9 +13,9 @@ import { Track } from '../temp/Track';
 import ActionSheet from "react-native-actions-sheet";
 import Share from 'react-native-share';
 import BaseComponent from '../functions/BaseComponent';
-import { style } from '../styles';
+import { deviceHeight, style } from '../styles';
 import { convertHMS } from '../functions/PTFunction';
-
+import Swiper from 'react-native-swiper'
 const actionSheetRef: any = createRef();
 
 TrackPlayer.updateOptions({
@@ -36,6 +36,8 @@ icon: require('../assets/logo.png')
 
 const Play = (props:any) => {
     const { data } = props.route.params;
+
+
 
     const trackPlayerInit = async () => {
         await TrackPlayer.setupPlayer();
@@ -97,13 +99,30 @@ const Play = (props:any) => {
         setSliderValue(Value);
         setIsSeeking(false);
     }
+    const [index, setIndex] = useState(1)
+    
     return (
         <BaseComponent title='Welcome to Jofy Music' rightIcon>
         <View style={style.container}>
-            <Image style={styles.image} source = {data.image} resizeMethod = 'resize' resizeMode = 'cover'/>
+            <Swiper
+                loop={false}
+                showsButtons={false}
+                autoplay={false}
+                // index={index}
+                showsPagination={false}
+                style={{height:(deviceHeight/2.5) + 18 }}
+                onIndexChanged={() => {}}
+            >
+                {
+                    data.image?.map((e:any,) => (
+                        <Image style={[styles.image, {}]} source = {e.url} resizeMethod = 'resize' resizeMode = 'cover'/>
+                    ))
+                }
+            </Swiper>
+            <View style={{top: -54}}>
             <HStack style={{justifyContent: 'space-between', alignItems: 'center', marginHorizontal: 24,}}>
                 <VStack>
-                    <Text style={styles.title}>
+                    <Text style={[style.pt, styles.title]}>
                         {data.title}
                     </Text>
                     <Text style={styles.artist}>
@@ -150,6 +169,7 @@ const Play = (props:any) => {
                 onPress={() => {
                     TrackPlayer.skipToPrevious()
                     .catch(() => {console.log("No Previous Track");
+                    setIndex(index-1)
                     })
                 }}
                 >
@@ -162,12 +182,14 @@ const Play = (props:any) => {
                     onPress={() => {
                         TrackPlayer.skipToNext()
                         .catch(() => {console.log("No Next Track");
+                        setIndex(index+1)
                         })
                     }}
                 >
                     <Ionicons name ="play-skip-forward-outline" size={27} color="#000"/>
                 </TouchableOpacity>
             </HStack>
+            </View>
             <ActionSheet ref={actionSheetRef}>
                 <View style={{ borderTopLeftRadius: 39, borderTopRightRadius: 39,}}>
                     <TouchableOpacity style={{marginVertical: 24,}}>
@@ -221,15 +243,11 @@ const styles = StyleSheet.create({
     {
         color: '#000',
         fontSize: 21,
-        fontFamily: 'Roboto',
-        fontWeight: 'bold',
     },
     artist:
     {
         color: '#000',
         fontSize: 18,
-        fontFamily: 'Roboto',
-        fontWeight: 'bold',
         marginVertical: 6,
     },
     slider:

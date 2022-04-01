@@ -7,6 +7,7 @@ import { PlaylistData } from '../temp/PlaylistData'
 import ActionSheet from "react-native-actions-sheet";
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import { active_opacity, style } from '../styles'
 
 const actionSheetRef: any = createRef();
 
@@ -26,42 +27,40 @@ const Playlist = () => {
     const renderItems = ({item, index}: any) => {
         return(
             <ScrollView style={{marginHorizontal: 12,}}>
-            <HStack style={styles.itemsRow}>
-                <TouchableOpacity 
+                <TouchableOpacity
+                activeOpacity={active_opacity}
                 onPress ={() => {
-                    if(index === 1)
-                    {
-                        onPlay(item)
-                    }
+                    
                 }}
                 >
-                    <Image
-                    source = {item.image}
-                    resizeMethod = 'resize'
-                    resizeMode = 'cover'
-                    style={styles.image}
-                    />
+                    <HStack style={styles.itemsRow}>
+                            <Image
+                            source = {item.image}
+                            resizeMethod = 'resize'
+                            resizeMode = 'cover'
+                            style={styles.image}
+                            />
+                        <VStack style={styles.itemColum}>
+                            <Text style={styles.title}>
+                                {item.title}
+                            </Text>
+                            <Text style={styles.numberSong}>
+                                {item.songNumber} songs
+                            </Text>
+                        </VStack>
+                        <TouchableOpacity onPress ={() => {
+                            actionSheetRef.current?.setModalVisible();
+                        }}>
+                            <Entypo style={styles.icon} name = "dots-three-vertical" size = {24} color="#444941"/>
+                        </TouchableOpacity>
+                    </HStack>
                 </TouchableOpacity>
-                <VStack style={styles.itemColum}>
-                    <Text style={styles.title}>
-                        {item.title}
-                    </Text>
-                    <Text style={styles.numberSong}>
-                        {item.songNumber} songs
-                    </Text>
-                </VStack>
-                <TouchableOpacity onPress ={() => {
-                    actionSheetRef.current?.setModalVisible();
-                }}>
-                    <Entypo style={styles.icon} name = "dots-three-vertical" size = {24} color="#444941"/>
-                </TouchableOpacity>
-            </HStack>
             </ScrollView>
         )
     }
     return (
         <View style={styles.container}>
-            <Text style={styles.header}>PlayList</Text>
+            <Text style={[style.pt, styles.header]}>PlayList</Text>
             <FlatList
             data={PlaylistData}
             showsHorizontalScrollIndicator = {false}
@@ -79,19 +78,19 @@ const Playlist = () => {
                     <TouchableOpacity style={{marginVertical: 24,}}>
                         <HStack style={{justifyContent:'flex-start', alignItems: 'center', marginHorizontal: 24,}}>
                                 <MaterialIcons style={{marginRight: 24,}} name = "delete-outline" size = {24} color = "#000"/>
-                                <Text style={{color : "#000"}}>Delete Song</Text>
+                                <Text style={{color : "#000"}}>Delete PlayList</Text>
                         </HStack>
                     </TouchableOpacity>
                     <TouchableOpacity style={{marginVertical: 24,}}>
                         <HStack style={{justifyContent:'flex-start', alignItems: 'center', marginHorizontal: 24,}}>
                                 <Ionicons style={{marginRight: 24,}} name = "download-outline" size = {24} color = "#000"/>
-                                <Text style={{color : "#000"}}>Download this song</Text>
+                                <Text style={{color : "#000"}}>Download song from this Playlist</Text>
                         </HStack>
                     </TouchableOpacity>
                     <TouchableOpacity style={{marginVertical: 24,}}>
                         <HStack style={{justifyContent:'flex-start', alignItems: 'center', marginHorizontal: 24,}}>
                                 <Ionicons style={{marginRight: 24,}} name = "share-social-outline" size = {24} color = "#000"/>
-                                <Text style={{color : "#000"}}>Share this song</Text>
+                                <Text style={{color : "#000"}}>Share this Playlist</Text>
                         </HStack>
                     </TouchableOpacity>
                 </View>
@@ -111,9 +110,7 @@ const styles = StyleSheet.create({
     header:
     {
         fontSize: 36,
-        fontFamily: 'Roboto',
         color: '#fff',
-        fontWeight: 'bold',
         marginHorizontal: 12,
         marginVertical: 12,
     },
