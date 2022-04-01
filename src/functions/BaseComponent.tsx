@@ -32,7 +32,7 @@ const BaseComponent = ({
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={{
         flex: 1,
-        backgroundColor:backgroundColor ? backgroundColor : '#fff',
+        backgroundColor:backgroundColor ? backgroundColor : backgroundColor,
       }}>
       {title && (
         <MainHeader
@@ -49,7 +49,7 @@ const BaseComponent = ({
               flex: 1,
               justifyContent: 'center',
               alignItems: 'center',
-              backgroundColor: '#fff',
+              backgroundColor: backgroundColor,
             }}>
             <View style={{width:100,height:80}}>
               <LottieView  source={require('../assets/top.json')} autoPlay />

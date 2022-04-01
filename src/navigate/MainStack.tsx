@@ -56,7 +56,7 @@ const MainStack = () => {
         screenOptions={{headerShown : false, animation: 'slide_from_right', presentation: 'card',}}
         >
             {/* <Stack.Screen name = "Login" component ={LoginScreen}/> */}
-            <Stack.Screen name = "Onboarding" component={OnboardingScreen}/>
+            {/* <Stack.Screen name = "Onboarding" component={OnboardingScreen}/> */}
             <Stack.Screen name = "Maintab" component={MainTab}/>
             <Stack.Screen name = "Play" component = {PlayScreen}/>
             <Stack.Screen name = "RecentlyPlay"  component ={RecentlyPlay1}/>

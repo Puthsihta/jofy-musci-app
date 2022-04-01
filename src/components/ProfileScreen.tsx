@@ -92,7 +92,7 @@ const ProfileScreen = () => {
                                             speed={2}
                                             
                                         />
-                                    <Text>Facebook</Text>
+                                    <Text style={{marginTop:5, color: '#444'}}>Facebook</Text>
                                     </Link>
                                 </TouchableOpacity>
                                 <TouchableOpacity style={[styles.socialButton, {backgroundColor: "#ff4545"}]}>
@@ -105,7 +105,7 @@ const ProfileScreen = () => {
                                         autoSize
                                         speed={2}
                                         />
-                                    <Text>Goggle</Text>
+                                    <Text style={{marginTop:5, color: '#444'}}>Goggle</Text>
                                     </Link>
                                 </TouchableOpacity>
                         </HStack>
