@@ -8,6 +8,7 @@ import {
   View,
   PermissionsAndroid,
   Platform,
+  ImageBackground,
 } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Head from '../contain/Head';
@@ -27,7 +28,13 @@ import {Track} from '../temp/Track';
 import ActionSheet from 'react-native-actions-sheet';
 import Share from 'react-native-share';
 import BaseComponent from '../functions/BaseComponent';
-import {deviceHeight, style} from '../styles';
+import {
+  backgroundSecondColor,
+  baseBackgroundColor,
+  deviceHeight,
+  secondaryColor,
+  style,
+} from '../styles';
 import {convertHMS} from '../functions/PTFunction';
 import Swiper from 'react-native-swiper';
 const actionSheetRef: any = createRef();
@@ -113,7 +120,14 @@ const Play = (props: any) => {
 
   return (
     <BaseComponent title="Welcome to Jofy Music" rightIcon>
-      <View style={style.container}>
+      <ImageBackground
+        source={require('../assets/img_bg.png')}
+        style={{
+          width: '100%',
+          height: '100%',
+          backgroundColor: baseBackgroundColor,
+        }}
+        resizeMode="stretch">
         <Swiper
           loop={false}
           showsButtons={false}
@@ -146,25 +160,25 @@ const Play = (props: any) => {
               onPress={() => {
                 actionSheetRef.current?.setModalVisible();
               }}>
-              <Entypo name="dots-three-vertical" size={24} color="#444941" />
+              <Entypo name="dots-three-vertical" size={24} color="#cecece" />
             </TouchableOpacity>
           </HStack>
           <HStack style={styles.optionPlay}>
             <TouchableOpacity onPress={handleClick1}>
               {show1 ? (
-                <Ionicons name="heart-outline" size={24} color="#000" />
+                <Ionicons name="heart-outline" size={24} color="#fff" />
               ) : (
-                <Ionicons name="heart" size={24} color="#000" />
+                <Ionicons name="heart" size={24} color="#fff" />
               )}
             </TouchableOpacity>
             <TouchableOpacity onPress={handleClick2}>
               {show2 ? (
-                <MaterialCommunityIcons name="repeat" size={27} color="#000" />
+                <MaterialCommunityIcons name="repeat" size={27} color="#fff" />
               ) : (
                 <MaterialCommunityIcons
                   name="repeat-once"
                   size={27}
-                  color="#000"
+                  color="#fff"
                 />
               )}
             </TouchableOpacity>
@@ -191,10 +205,10 @@ const Play = (props: any) => {
                 marginHorizontal: 24,
               },
             ]}>
-            <Text style={{color: '#656565'}}>
+            <Text style={{color: '#656556'}}>
               {convertHMS(progress.position)}
             </Text>
-            <Text style={{color: '#656565'}}>
+            <Text style={{color: '#656556'}}>
               {convertHMS(progress.duration)}
             </Text>
           </HStack>
@@ -324,7 +338,7 @@ const Play = (props: any) => {
             </TouchableOpacity>
           </View>
         </ActionSheet>
-      </View>
+      </ImageBackground>
     </BaseComponent>
   );
 };
@@ -344,11 +358,11 @@ const styles = StyleSheet.create({
     marginHorizontal: 24,
   },
   title: {
-    color: '#000',
+    color: '#fff',
     fontSize: 21,
   },
   artist: {
-    color: '#000',
+    color: '#eee',
     fontSize: 18,
     marginVertical: 6,
   },
@@ -361,7 +375,7 @@ const styles = StyleSheet.create({
   playControl: {
     marginHorizontal: 27,
     marginVertical: 27,
-    backgroundColor: '#61AA8B',
+    backgroundColor: secondaryColor,
     paddingVertical: 7,
     paddingHorizontal: 45,
     justifyContent: 'space-between',

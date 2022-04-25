@@ -7,6 +7,7 @@ import {
   Text,
   View,
   TouchableOpacity,
+  ImageBackground,
 } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import {navigate} from '../navigate/MainStack';
@@ -14,8 +15,16 @@ import {PlaylistData} from '../temp/PlaylistData';
 import ActionSheet from 'react-native-actions-sheet';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import {active_opacity, style} from '../styles';
+import {
+  active_opacity,
+  baseBackgroundColor,
+  baseColor,
+  borderColor,
+  style,
+} from '../styles';
 import LinearGradient from 'react-native-linear-gradient';
+import DropShadow from 'react-native-drop-shadow';
+import Ripple from 'react-native-material-ripple';
 
 const actionSheetRef: any = createRef();
 
@@ -31,10 +40,17 @@ const Playlist = () => {
   const renderItems = ({item, index}: any) => {
     return (
       <ScrollView style={{marginHorizontal: 12}}>
-        <TouchableOpacity activeOpacity={active_opacity} onPress={() => {}}>
+        <TouchableOpacity
+          activeOpacity={active_opacity}
+          onPress={() => {
+            // navigate('CategoriesDetail')
+          }}>
           <LinearGradient
-            colors={['#6BB495', '#6BB466', '#6BB495']}
-            style={styles.itemsRow}>
+            start={{x: 0.1, y: 1}}
+            end={{x: 0.5, y: 1}}
+            locations={[0, 0.5, 0.1]}
+            colors={['transparent', baseColor, 'transparent']}
+            style={[styles.itemsRow, {borderRadius: 15}]}>
             <Image
               source={item.image}
               resizeMethod="resize"
@@ -49,12 +65,23 @@ const Playlist = () => {
               onPress={() => {
                 actionSheetRef.current?.setModalVisible();
               }}>
-              <Entypo
-                style={styles.icon}
-                name="dots-three-vertical"
-                size={24}
-                color="#444941"
-              />
+              <DropShadow
+                style={{
+                  shadowColor: '#ccc',
+                  shadowOffset: {
+                    width: 0,
+                    height: 0,
+                  },
+                  shadowOpacity: 1,
+                  shadowRadius: 3,
+                }}>
+                <Entypo
+                  style={styles.icon}
+                  name="dots-three-vertical"
+                  size={24}
+                  color="#444941"
+                />
+              </DropShadow>
             </TouchableOpacity>
           </LinearGradient>
         </TouchableOpacity>
@@ -62,11 +89,15 @@ const Playlist = () => {
     );
   };
   return (
-    <View style={styles.container}>
+    <ImageBackground
+      source={require('../assets/img_bg.png')}
+      style={styles.container}
+      resizeMode="stretch">
       <Text style={[style.pt, styles.header]}>PlayList</Text>
       <FlatList
         data={PlaylistData}
         showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
         renderItem={renderItems}
         keyExtractor={keyExtrator}
       />
@@ -140,7 +171,7 @@ const Playlist = () => {
           </TouchableOpacity>
         </View>
       </ActionSheet>
-    </View>
+    </ImageBackground>
   );
 };
 
@@ -149,7 +180,9 @@ export default Playlist;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#7FC8A9',
+    backgroundColor: baseBackgroundColor,
+    width: '100%',
+    height: '100%',
   },
   header: {
     fontSize: 36,
@@ -167,9 +200,10 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     justifyContent: 'space-between',
     alignItems: 'center',
-    borderRadius: 15,
     marginVertical: 9,
     flexDirection: 'row',
+    borderWidth: 0.3,
+    borderColor: borderColor,
   },
   itemColum: {
     marginHorizontal: 21,
@@ -180,13 +214,13 @@ const styles = StyleSheet.create({
     marginHorizontal: 12,
   },
   title: {
-    color: '#444941',
-    fontSize: 12,
+    color: '#eee',
+    fontSize: 15,
   },
   numberSong: {
-    color: '#444941',
+    color: '#ccc',
     fontFamily: 'Roboto',
-    fontSize: 9,
+    fontSize: 12,
     fontWeight: 'bold',
   },
 });

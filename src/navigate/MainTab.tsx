@@ -1,4 +1,4 @@
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {AnimatedTabBarNavigator} from 'react-native-animated-nav-tab-bar';
 import React from 'react';
 import {Animated, StyleSheet, Text, View} from 'react-native';
 import HomeScreen from '../components/HomeScreen';
@@ -6,55 +6,55 @@ import MusicScreen from '../components/MusicScreen';
 import ProfileScreen from '../components/ProfileScreen';
 import SearchScreen from '../components/SearchScreen';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import {secondaryColor} from '../styles';
+import {baseBackgroundColor, baseColor, secondaryColor} from '../styles';
+import LinearGradient from 'react-native-linear-gradient';
 
-const Tab = createBottomTabNavigator();
+const Tab = AnimatedTabBarNavigator();
 const MainTab = () => {
   const renderIcon = (name: any, color: any) => {
     return <FontAwesome name={name} color={color} size={22} />;
   };
   return (
     <Tab.Navigator
-      backBehavior="initialRoute"
-      screenOptions={{
-        headerShown: false,
-        tabBarActiveTintColor: '#7FC8A9',
-        tabBarInactiveTintColor: secondaryColor,
-        tabBarActiveBackgroundColor: '#5F7A61',
-        tabBarInactiveBackgroundColor: '#444941',
-        tabBarHideOnKeyboard: true,
-        tabBarLabelStyle: {fontWeight: 'bold', fontSize: 12, marginVertical: 3},
+      tabBarOptions={{
+        keyboardHidesTabBar: true,
+        activeTintColor: '#fff',
+        inactiveTintColor: '#cccc',
+        activeBackgroundColor: baseBackgroundColor,
+        tabStyle: {
+          backgroundColor: secondaryColor,
+        },
       }}>
       <Tab.Screen
         name="Home"
         component={HomeScreen}
         options={{
-          tabBarLabel: 'Home',
-          tabBarIcon: ({color}) => renderIcon('home', color),
+          // tabBarLabel: 'Home',
+          tabBarIcon: ({color}: any) => renderIcon('home', color),
         }}
       />
       <Tab.Screen
         name="Search"
         component={SearchScreen}
         options={{
-          tabBarLabel: 'Search',
-          tabBarIcon: ({color}) => renderIcon('search', color),
+          // tabBarLabel: 'Search',
+          tabBarIcon: ({color}: any) => renderIcon('search', color),
         }}
       />
       <Tab.Screen
         name="Music"
         component={MusicScreen}
         options={{
-          tabBarLabel: 'Music',
-          tabBarIcon: ({color}) => renderIcon('music', color),
+          // tabBarLabel: 'Music',
+          tabBarIcon: ({color}: any) => renderIcon('music', color),
         }}
       />
       <Tab.Screen
         name="Profile"
         component={ProfileScreen}
         options={{
-          tabBarLabel: 'Profile',
-          tabBarIcon: ({color}) => renderIcon('user', color),
+          // tabBarLabel: 'Profile',
+          tabBarIcon: ({color}: any) => renderIcon('user', color),
         }}
       />
     </Tab.Navigator>

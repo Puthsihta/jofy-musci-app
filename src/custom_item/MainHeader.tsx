@@ -113,8 +113,8 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   icon: {
-    width: 36,
-    height: 36,
+    width: 39,
+    height: 39,
   },
   backgroundColor: {
     borderRadius: 18,
@@ -123,6 +123,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'center',
-    marginHorizontal: 9,
+    marginHorizontal: 6,
   },
 });

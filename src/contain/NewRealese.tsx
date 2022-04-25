@@ -7,9 +7,10 @@ import {
   TouchableOpacity,
   FlatList,
 } from 'react-native';
+import DropShadow from 'react-native-drop-shadow';
 import CustomDropShadow from '../custom_item/CustomDropShadow';
 import {navigate} from '../navigate/MainStack';
-import {active_opacity, style} from '../styles';
+import {active_opacity, secondaryColor, style} from '../styles';
 import {Release} from '../temp/Release';
 
 const NewRealese = () => {
@@ -23,12 +24,23 @@ const NewRealese = () => {
         onPress={() => {
           navigate('Play', {data: item});
         }}>
-        <Image
-          source={item.image[0].url}
-          resizeMethod="resize"
-          resizeMode="cover"
-          style={styles.image}
-        />
+        <DropShadow
+          style={{
+            shadowColor: '#333',
+            shadowOffset: {
+              width: 9,
+              height: 9,
+            },
+            shadowOpacity: 0.6,
+            shadowRadius: 1,
+          }}>
+          <Image
+            source={item.image[0].url}
+            resizeMethod="resize"
+            resizeMode="cover"
+            style={styles.image}
+          />
+        </DropShadow>
       </TouchableOpacity>
     );
   };

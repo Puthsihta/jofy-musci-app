@@ -1,20 +1,11 @@
-import {useNavigation} from '@react-navigation/core';
-import {Button, HStack} from 'native-base';
 import React, {useCallback} from 'react';
-import {
-  FlatList,
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  Dimensions,
-} from 'react-native';
+import {FlatList, ImageBackground, StyleSheet, Text, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {navigate} from '../navigate/MainStack';
-import {active_opacity, style} from '../styles';
+import {active_opacity, baseColor, borderColor, style} from '../styles';
 import {CategoriesData} from '../temp/CategoriesData';
 import Ripple from 'react-native-material-ripple';
 import CustomDropShadow from '../custom_item/CustomDropShadow';
+import DropShadow from 'react-native-drop-shadow';
 const Categories = () => {
   const keyExtrator = useCallback((_, index) => {
     return index.toString();
@@ -27,11 +18,24 @@ const Categories = () => {
         onPress={() => {
           // navigate('CategoriesDetail')
         }}>
-        <LinearGradient
-          colors={['#83BD75', '#B4E197', '#4E944F']}
+        <ImageBackground
+          source={require('../assets/img_squar_bg_3.png')}
+          resizeMode="stretch"
+          imageStyle={{borderRadius: 12}}
           style={styles.button}>
-          <Text style={[style.p, {color: '#4A503D'}]}>{item.name}</Text>
-        </LinearGradient>
+          <DropShadow
+            style={{
+              shadowColor: '#333',
+              shadowOffset: {
+                width: 6,
+                height: 6,
+              },
+              shadowOpacity: 0.6,
+              shadowRadius: 1,
+            }}>
+            <Text style={[style.p, {color: '#eeee'}]}>{item.name}</Text>
+          </DropShadow>
+        </ImageBackground>
       </Ripple>
     );
   };
@@ -66,11 +70,16 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   button: {
-    paddingVertical: 12,
-    paddingHorizontal: 27,
+    width: 99,
+    height: 54,
     borderRadius: 9,
+    borderColor: borderColor,
     marginVertical: 3,
     marginRight: 18,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderTopWidth: 0.3,
+    borderBottomWidth: 0.3,
   },
   text: {
     textAlign: 'center',

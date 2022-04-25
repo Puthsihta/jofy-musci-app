@@ -1,6 +1,13 @@
 import {Icon, Input} from 'native-base';
 import React from 'react';
-import {StyleSheet, Text, TextInput, View} from 'react-native';
+import {
+  ImageBackground,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {
@@ -8,6 +15,7 @@ import {
   backgroundSecondColor,
   baseBackgroundColor,
   deviceWidth,
+  secondaryColor,
   style,
 } from '../styles';
 
@@ -17,7 +25,14 @@ const SearchScreen = () => {
     inputRef.current?.focus();
   }, []);
   return (
-    <View style={style.container}>
+    <ImageBackground
+      source={require('../assets/img_bg.png')}
+      style={{
+        width: '100%',
+        height: '100%',
+        backgroundColor: baseBackgroundColor,
+      }}
+      resizeMode="stretch">
       <View style={[style.row, styles.searchBar]}>
         <TextInput
           // onChangeText={txt => handleChange('text', txt)}
@@ -40,7 +55,7 @@ const SearchScreen = () => {
           <AntDesign name="search1" size={25} color={'#fff'} />
         </TouchableOpacity>
       </View>
-    </View>
+    </ImageBackground>
   );
 };
 
@@ -65,7 +80,7 @@ const styles = StyleSheet.create({
   searchButton: {
     height: 50,
     width: 39,
-    backgroundColor: backgroundSecondColor,
+    backgroundColor: secondaryColor,
     borderTopRightRadius: 5,
     borderBottomRightRadius: 5,
     justifyContent: 'center',

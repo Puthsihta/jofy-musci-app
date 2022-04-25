@@ -9,13 +9,14 @@ import {
 export const deviceWidth = Dimensions.get('window').width;
 export const deviceHeight = Dimensions.get('window').height;
 export const active_opacity = 0.8;
-export const baseColor = '#7FC8A9';
+export const baseColor = '#00cc99';
 export const whiteColor = '#ffffff';
-export const baseBackgroundColor = '#7FC8A9';
-export const secondaryColor = '#5F7A61';
+export const baseBackgroundColor = '#00cc99';
+export const secondaryColor = '#009999';
 export const backgroundSecondColor = '#5F7A61';
 export const backgroundLoginColor = '#444941';
 export const shadowColor = '#000';
+export const borderColor = '#B4E197';
 
 export const customColor = {
   backdrop: '#fff',
