@@ -1,7 +1,10 @@
 package com.musicapp;
+
 import com.facebook.react.ReactActivity;
- import com.facebook.react.ReactActivityDelegate; // <- add this necessary import
-import com.zoontek.rnbootsplash.RNBootSplash; // <- add this necessary import
+import com.facebook.react.ReactActivityDelegate; // <- add this necessary import
+import org.devio.rn.splashscreen.SplashScreen;
+import android.os.Bundle;
+// import com.zoontek.rnbootsplash.RNBootSplash; // <- add this necessary import
 
 public class MainActivity extends ReactActivity {
 
@@ -14,21 +17,22 @@ public class MainActivity extends ReactActivity {
     return "MusicApp";
   }
 
-   @Override
-   protected ReactActivityDelegate createReactActivityDelegate() {
-     return new ReactActivityDelegate(this, getMainComponentName()) {
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    SplashScreen.show(this);
+    super.onCreate(savedInstanceState);
+  }
 
-       @Override
-       protected void loadApp(String appKey) {
-         RNBootSplash.init(MainActivity.this); // <- initialize the splash screen
-         super.loadApp(appKey);
-       }
-     };
-   }
 //  @Override
-//    protected void loadApp(String appKey) {
-//      RNBootSplash.init(getPlainActivity()); // <- initialize the splash screen
-//      super.loadApp(appKey);
+//  protected ReactActivityDelegate createReactActivityDelegate() {
+//    return new ReactActivityDelegate(this, getMainComponentName()) {
+//
+//      //   @Override
+//      //   protected void loadApp(String appKey) {
+//      //     RNBootSplash.init(MainActivity.this); // <- initialize the splash screen
+//      //     super.loadApp(appKey);
+//      //   }
+//      // }
 //    }
 //  }
 }

@@ -16,7 +16,7 @@ const CustomDropShadow = ({text}: any) => {
           shadowOpacity: 1,
           shadowRadius: 1,
         }}>
-        <Text style={style.homePageTitle}>{text}</Text>
+        <Text style={[style.pBold, style.homePageTitle]}>{text}</Text>
       </DropShadow>
     </>
   );
@@ -24,11 +24,4 @@ const CustomDropShadow = ({text}: any) => {
 
 export default CustomDropShadow;
 
-const styles = StyleSheet.create({
-  homePageTitle: {
-    fontSize: 33,
-    color: '#fff',
-    marginLeft: 18,
-    ...Battambang,
-  },
-});
+const styles = StyleSheet.create({});

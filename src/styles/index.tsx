@@ -2,7 +2,10 @@ import {Dimensions, StyleSheet} from 'react-native';
 import {
   Battambang,
   BattambangBold,
+  Lora,
   LoraBold,
+  Misto,
+  PlayfairDisplayBold,
   Toathmor,
 } from '../custom_fonts/customFont';
 
@@ -64,6 +67,5 @@ export const style = StyleSheet.create({
     fontSize: 33,
     color: '#fff',
     marginLeft: 18,
-    ...Battambang,
   },
 });

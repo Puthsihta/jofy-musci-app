@@ -37,6 +37,7 @@ import {
 } from '../styles';
 import {convertHMS} from '../functions/PTFunction';
 import Swiper from 'react-native-swiper';
+import DropShadow from 'react-native-drop-shadow';
 const actionSheetRef: any = createRef();
 
 TrackPlayer.updateOptions({
@@ -212,63 +213,74 @@ const Play = (props: any) => {
               {convertHMS(progress.duration)}
             </Text>
           </HStack>
-          <HStack style={styles.playControl}>
-            <TouchableOpacity
-              onPress={() => {
-                TrackPlayer.skipToPrevious().catch(() => {
-                  console.log('No Previous Track');
-                  setIndex(index - 1);
-                });
-              }}>
-              <Image
-                source={require('../assets/tool/btn_play_back.png')}
-                style={{
-                  width: 42,
-                  height: 42,
-                  alignSelf: 'center',
-                }}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={isPlayPuase}>
-              {isPlaying ? (
+          <DropShadow
+            style={{
+              shadowColor: '#333',
+              shadowOffset: {
+                width: 1,
+                height: 6,
+              },
+              shadowOpacity: 0.6,
+              shadowRadius: 1,
+            }}>
+            <HStack style={styles.playControl}>
+              <TouchableOpacity
+                onPress={() => {
+                  TrackPlayer.skipToPrevious().catch(() => {
+                    console.log('No Previous Track');
+                    setIndex(index - 1);
+                  });
+                }}>
                 <Image
-                  source={require('../assets/tool/btn_play.png')}
+                  source={require('../assets/tool/btn_play_back.png')}
                   style={{
-                    width: 69,
-                    height: 69,
+                    width: 42,
+                    height: 42,
                     alignSelf: 'center',
-                    marginTop: 6,
                   }}
                 />
-              ) : (
+              </TouchableOpacity>
+              <TouchableOpacity onPress={isPlayPuase}>
+                {isPlaying ? (
+                  <Image
+                    source={require('../assets/tool/btn_play.png')}
+                    style={{
+                      width: 69,
+                      height: 69,
+                      alignSelf: 'center',
+                      marginTop: 6,
+                    }}
+                  />
+                ) : (
+                  <Image
+                    source={require('../assets/tool/btn_pause.png')}
+                    style={{
+                      width: 69,
+                      height: 69,
+                      alignSelf: 'center',
+                      marginTop: 6,
+                    }}
+                  />
+                )}
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  TrackPlayer.skipToNext().catch(() => {
+                    console.log('No Next Track');
+                    setIndex(index + 1);
+                  });
+                }}>
                 <Image
-                  source={require('../assets/tool/btn_pause.png')}
+                  source={require('../assets/tool/btn_play_next.png')}
                   style={{
-                    width: 69,
-                    height: 69,
+                    width: 42,
+                    height: 42,
                     alignSelf: 'center',
-                    marginTop: 6,
                   }}
                 />
-              )}
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => {
-                TrackPlayer.skipToNext().catch(() => {
-                  console.log('No Next Track');
-                  setIndex(index + 1);
-                });
-              }}>
-              <Image
-                source={require('../assets/tool/btn_play_next.png')}
-                style={{
-                  width: 42,
-                  height: 42,
-                  alignSelf: 'center',
-                }}
-              />
-            </TouchableOpacity>
-          </HStack>
+              </TouchableOpacity>
+            </HStack>
+          </DropShadow>
         </View>
         <ActionSheet ref={actionSheetRef}>
           <View style={{borderTopLeftRadius: 39, borderTopRightRadius: 39}}>
